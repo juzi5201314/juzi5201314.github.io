@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 橘子的临时小博客</title>
+    <link>https://juzi5201314.github.io/post/</link>
+    <description>Recent content in Posts on 橘子的临时小博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 10 Apr 2018 19:25:33 +0800</lastBuildDate>
+    
+	<atom:link href="https://juzi5201314.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>First</title>
+      <link>https://juzi5201314.github.io/post/first/</link>
+      <pubDate>Tue, 10 Apr 2018 19:25:33 +0800</pubDate>
+      
+      <guid>https://juzi5201314.github.io/post/first/</guid>
+      <description>喵喵喵? 来来来 啦啦啦 略略略</description>
+    </item>
+    
+  </channel>
+</rss>
