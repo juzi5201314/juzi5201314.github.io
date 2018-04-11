@@ -2,12 +2,11 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-	<meta name="generator" content="Hugo 0.39-DEV" />
 
   
   <meta charset="UTF-8">
   <title>
-    橘子的小博客
+    [闲聊]无聊玩测压 | 橘子的小博客
   </title>
 
 
@@ -15,7 +14,7 @@
   <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,initial-scale=1">
 
   
-  <link rel="canonical" href="https://juzi5201314.github.io/"/>
+  <link rel="canonical" href="https://juzi5201314.github.io/post/wlcy/"/>
 
   
   <link rel="stylesheet" href="/css/sanitize.css">
@@ -58,46 +57,43 @@
   </header>
 
 
-
-
-<main id="index" role="main">
-  <div class="article-header light-gray"><h1>Recent Articles</h1></div>
   
-  
-  <div class="summary">
-    <h2><a href="https://juzi5201314.github.io/post/new/">欢迎来到橘子又一个新的博客 </a></h2>
-    <div class="meta">
-      Apr 11, 2018 &nbsp;
-      
+  <main id="single" role="main">
+    <div class="article-header">
+      <h1>[闲聊]无聊玩测压</h1>
+      <div class="meta">
+        Apr 11, 2018 &nbsp;
+        
+      </div>
     </div>
-  </div>
-  
-  <div class="summary">
-    <h2><a href="https://juzi5201314.github.io/post/wlcy/">[闲聊]无聊玩测压 </a></h2>
-    <div class="meta">
-      Apr 11, 2018 &nbsp;
+    <article>
+      <p>今天贼无聊，于是找了个go写的测压工具来玩，其实说白了就是cc，不过没代理。</p>
+
+<p>于是我准备了3个静态页面来当目标，这3个页面都是运行在同一个1h1g3m的腾讯云vps上。分别是宝塔面板的登录页，apache，go echo框架，其中后2个是指向同一个静态文件。</p>
+
+<p>首先我开始1分钟的10/50/100并发，在低并发的情况下，go的性能比其他都好2-3倍。到了100并发，apache追了上来，几乎赶上了go。
+然而更大并发(1000-10000)，可能是因为apache并发本来就不如nginx，也不是轻量级的东西，速度就慢了下来。
+而go的强大的并发性能，比apache多坚持了一会，cpu占用也不高。可能是因为宽带占满了(峰值达到了24mbps)，所以差不多到60秒的时候都是无法访问的了。</p>
+
+<p>那么宝塔登录页呢，嗯，早就崩溃了，还要我手动进ssh重启宝塔。</p>
+
       
-    </div>
-  </div>
-  
-  <div class="summary">
-    <h2><a href="https://juzi5201314.github.io/post/cqhttp/">[安利]qq机器人插件 Cqhttp </a></h2>
-    <div class="meta">
-      Apr 11, 2018 &nbsp;
       
-    </div>
-  </div>
+      
+    </article>
+    
+
+
+  </main>
   
-</main>
-
-
-
-<nav>
-  
-  
-
-</nav>
-
+  <nav class="pagination-single">
+    
+      <span class="previous">&larr; <a href="https://juzi5201314.github.io/post/cqhttp/" rel="prev">[安利]qq机器人插件 Cqhttp</a></span>
+    
+    
+      <span class="next"><a href="https://juzi5201314.github.io/post/new/" rel="next">欢迎来到橘子又一个新的博客</a> &rarr;</span>
+    
+  </nav>
 
 
   

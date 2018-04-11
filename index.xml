@@ -6,22 +6,45 @@
     <description>Recent content on 橘子的小博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 11 Apr 2018 09:52:39 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 11 Apr 2018 11:16:03 +0800</lastBuildDate>
     
 	<atom:link href="https://juzi5201314.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>qq机器人插件 Cqhttp</title>
+      <title>欢迎来到橘子又一个新的博客</title>
+      <link>https://juzi5201314.github.io/post/new/</link>
+      <pubDate>Wed, 11 Apr 2018 11:16:03 +0800</pubDate>
+      
+      <guid>https://juzi5201314.github.io/post/new/</guid>
+      <description>咳咳
+之前换过许多个博客，然而都因为各种原因没坚持下来，这次又搞了一个(脸红)，希望能坚持下来吧。
+求cc求dd，打死算我输л̵ʱªʱªʱª (ᕑᗢᓫา∗)˒。</description>
+    </item>
+    
+    <item>
+      <title>[闲聊]无聊玩测压</title>
+      <link>https://juzi5201314.github.io/post/wlcy/</link>
+      <pubDate>Wed, 11 Apr 2018 10:47:40 +0800</pubDate>
+      
+      <guid>https://juzi5201314.github.io/post/wlcy/</guid>
+      <description>今天贼无聊，于是找了个go写的测压工具来玩，其实说白了就是cc，不过没代理。
+于是我准备了3个静态页面来当目标，这3个页面都是运行在同一个1h1g3m的腾讯云vps上。分别是宝塔面板的登录页，apache，go echo框架，其中后2个是指向同一个静态文件。
+首先我开始1分钟的10/50/100并发，在低并发的情况下，go的性能比其他都好2-3倍。到了100并发，apache追了上来，几乎赶上了go。 然而更大并发(1000-10000)，可能是因为apache并发本来就不如nginx，也不是轻量级的东西，速度就慢了下来。 而go的强大的并发性能，比apache多坚持了一会，cpu占用也不高。可能是因为宽带占满了(峰值达到了24mbps)，所以差不多到60秒的时候都是无法访问的了。
+那么宝塔登录页呢，嗯，早就崩溃了，还要我手动进ssh重启宝塔。</description>
+    </item>
+    
+    <item>
+      <title>[安利]qq机器人插件 Cqhttp</title>
       <link>https://juzi5201314.github.io/post/cqhttp/</link>
       <pubDate>Wed, 11 Apr 2018 09:52:39 +0800</pubDate>
       
       <guid>https://juzi5201314.github.io/post/cqhttp/</guid>
       <description>给大家安利一个基于酷q的http插件
 这个插件原理就是通过http或者websocket，来实现插件端与服务端的通信。你可以用其他语言写后端来写qq机器人。
-具体连接见(cqhttp)[https://github.com/richardchien/coolq-http-api]
+具体连接见cqhttp插件
 此插件已有java/php/nodejs/python/golang的sdk，其他语言自己实现也非常简单。
-顺便推荐下我写的(go sdk)https://github.com/juzi5201314/cqhttp-go-sdk，golang大法好。</description>
+顺便推荐下我写的go sdk(手动滑稽)，golang大法好。</description>
     </item>
     
     <item>
@@ -30,7 +53,7 @@
       <pubDate>Tue, 10 Apr 2018 19:25:21 +0800</pubDate>
       
       <guid>https://juzi5201314.github.io/about/</guid>
-      <description></description>
+      <description>主人: 橘子 (soeur) qq: 1034236490</description>
     </item>
     
   </channel>
