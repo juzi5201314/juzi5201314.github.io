@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on 橘子的临时小博客</title>
+    <title>Posts on 橘子的小博客</title>
     <link>https://juzi5201314.github.io/post/</link>
-    <description>Recent content in Posts on 橘子的临时小博客</description>
+    <description>Recent content in Posts on 橘子的小博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 10 Apr 2018 19:25:33 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 11 Apr 2018 09:52:39 +0800</lastBuildDate>
     
 	<atom:link href="https://juzi5201314.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>First</title>
-      <link>https://juzi5201314.github.io/post/first/</link>
-      <pubDate>Tue, 10 Apr 2018 19:25:33 +0800</pubDate>
+      <title>qq机器人插件 Cqhttp</title>
+      <link>https://juzi5201314.github.io/post/cqhttp/</link>
+      <pubDate>Wed, 11 Apr 2018 09:52:39 +0800</pubDate>
       
-      <guid>https://juzi5201314.github.io/post/first/</guid>
-      <description>喵喵喵? 来来来 啦啦啦 略略略</description>
+      <guid>https://juzi5201314.github.io/post/cqhttp/</guid>
+      <description>给大家安利一个基于酷q的http插件
+这个插件原理就是通过http或者websocket，来实现插件端与服务端的通信。你可以用其他语言写后端来写qq机器人。
+具体连接见(cqhttp)[https://github.com/richardchien/coolq-http-api]
+此插件已有java/php/nodejs/python/golang的sdk，其他语言自己实现也非常简单。
+顺便推荐下我写的(go sdk)https://github.com/juzi5201314/cqhttp-go-sdk，golang大法好。</description>
     </item>
     
   </channel>
