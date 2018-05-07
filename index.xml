@@ -6,10 +6,42 @@
     <description>Recent content on 橘子的小博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 11 Apr 2018 11:16:03 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 07 May 2018 11:16:03 +0800</lastBuildDate>
     
 	<atom:link href="https://systir.net/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>使劲折腾grub</title>
+      <link>https://systir.net/post/1/</link>
+      <pubDate>Mon, 07 May 2018 11:16:03 +0800</pubDate>
+      
+      <guid>https://systir.net/post/1/</guid>
+      <description>  为了装各种 linux发行版玩，manjaro系统两次炸了4次，前三次救了回来，然而第四次。。我配置了3天的数据啊啊啊啊
+ 事情是这样的，昨天闲得无聊，折腾的安系统玩，我原来在sda1有个manjaro(一个基于archlinux的系统)，用的好好的，然后在其他分区(sda11)安了另外一个系统(linux mint)。
+安装的时候呢是好好的，然后关机弹出来一堆error，因为很快就关机了，所以看不清。
+接着再开机，mint系统没问题。
+然而。。。进manjaro炸了，从mint的grub引导进入manjaro，然后跳进了grub救援模式。
+我猜测是因为mint安装的时候把manjaro的引导覆盖了，然而覆盖的时候发生了不可描述的事情，于是。。gg
+那怎么办呢，我立马百度google搜狗bing了一番，输入了以下指令，成功进入系统。
+set root=(hd0,msdos1) set prefix=(hd0,msdos1)/boot/grub insmod normal normal  hd0是储存设备，msdos1表示分区1。可以输入ls查看，不知道自己系统在哪个分区的可以使用ls (xx,yyy)/，如果是linux系统的话就会显示根目录的文件，如果是空的话会提示not filesystem。系统一般都会有/boot,/root,/home,/usr,/lib,/etc等等。如果是单独一个分区专门装grub来引导的话，里面就会有/grub目录 &amp;gt; 第一次成功救回，用时15分钟
+然后装了下一个系统- kde neon。这个系统安装依然很顺利，(题外话，这个系统默认界面是真的非常漂亮，同样是kde桌面，manjaro怎么都配置不出这么漂亮的，它的白色系ui和细线条给人一种非常简洁漂亮高雅的感觉。随便吐槽一下mint的xfce版，那里面自带的xfce4一开始的上手机塑料风开机就恶心了我一下，然而换了各种主题漂亮的一点点，but还是非常的丑。xfce4换主题还贼麻烦)。
+然后安装完重启，嗯，manjaro又炸了。 这次在grub救援模式都救不回来了，具体表现为执行normal后无反应，manjaro的grub坏掉了。
+那肿么办呢，我突然想起manjaro还有个急救模式，赶紧强制重启试试看。
+好了，成功进去manjaro了，赶紧敲了一堆grub-mkconfig，grub-install等指令压压惊。 &amp;gt; 第二次救回，耗时1个多小时左右
+好了，成功救回两次系统，我开始膨胀了。清掉除了manjaro之外的系统并格式化了分区。重启~
+嗯，我又见到了那个黑乎乎的grub救援模式窗口，我#@*&amp;amp;%$^。
+这次用第一次的办法已经行不通了，
+error: file /boot/grub/i386-pc/narmal.mod not found  ，而因为只剩下一个系统了，grub坏掉，也进不去manjaro的救援模式了(路人:废话，引导都没了进个毛线)。
+呜呜呜，那肿么办呢，我想到可以再刷一个启动盘，不就有引导了吗。
+说干就干，问题又来了。电脑都boom了，用什么刷呢？我想到了在抽屉发霉的树莓派，然后下载完镜像，发现没有arm平台的image writer，这时候zz的我终于想到了dd大法，终于刷好了。
+我利用启动盘的引导成功进去了在硬盘上的manjaro的救援模式，然后发现救援模式也不行，满屏幕error: file xxx not found，grub彻底boom了(手动哭)。
+一筹莫展的时候，我终于机智的想到了，用启动盘再安一次系统到其他分区，然后安装新系统的时候把引导安去原来的引导分区里覆盖掉。
+终于ok啦，我又再试(皮)了几次，没毛病。 &amp;gt; 第三次救回，耗时4个多小时。
+然后安了各种系统，安完之后一个，进文件浏览器一看，嗯嗯嗯？我sda1怎么被格式化了????
+我用了一天保住的系统就这样莫名其妙没了？连凶手都不知道啊呜呜呜
+就这样，我白耗了一天，从一个连grub是什么都不知道萌新，变成了熟练grub操作的苦工，嘤嘤嘤 </description>
+    </item>
     
     <item>
       <title>欢迎来到橘子又一个新的博客</title>

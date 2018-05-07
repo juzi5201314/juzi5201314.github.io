@@ -1,6 +1,0 @@
-#hugo --theme=angels-ladder --baseUrl="https://systir.net/"
-#git init
-#git remote add origin https://github.com/juzi5201314/juzi5201314.github.io.git
-git add -A
-git commit -m "update"
-git push -u origin master
