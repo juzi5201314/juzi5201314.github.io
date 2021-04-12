@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://gugugu.dev/about/</loc>
+    <lastmod>2021-04-12T19:21:36+08:00</lastmod>
+  </url><url>
+    <loc>https://gugugu.dev/posts/</loc>
+    <lastmod>2021-03-04T09:26:26+08:00</lastmod>
+  </url><url>
+    <loc>https://gugugu.dev/posts/the-first/</loc>
+    <lastmod>2021-03-04T09:26:26+08:00</lastmod>
+  </url><url>
+    <loc>https://gugugu.dev/</loc>
+    <lastmod>2021-03-04T09:26:26+08:00</lastmod>
+  </url><url>
+    <loc>https://gugugu.dev/categories/</loc>
+  </url><url>
+    <loc>https://gugugu.dev/tags/</loc>
+  </url>
+</urlset>
