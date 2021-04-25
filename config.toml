@@ -1,7 +1,7 @@
 baseURL = "/"
 languageCode = "zh-cn"
 title = "橘子的日志本"
-theme = "yinyang"
+theme = "yinyang2"
 publishDir = "docs" # Github Pages
 
 [author]
