@@ -1,4 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>橘子的日志本</title><link>/</link><description>Recent content on 橘子的日志本</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 04 Mar 2021 09:26:26 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml"/><item><title>关于我</title><link>/about/</link><pubDate>Mon, 12 Apr 2021 19:21:36 +0800</pubDate><guid>/about/</guid><description>本人是广州本地人, 带专🐶.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>橘子的日志本</title><link>/</link><description>Recent content on 橘子的日志本</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 25 Apr 2021 22:10:37 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml"/><item><title>最好不要在你的ci里使用其他软件的master分支</title><link>/posts/no-use-master-on-you-ci/</link><pubDate>Sun, 25 Apr 2021 22:10:37 +0800</pubDate><guid>/posts/no-use-master-on-you-ci/</guid><description>为什么怎么说呢, 因为我觉得, 在ci里使用到其他的仓库, 就不应该直接拉某个分支的最新commit, 否则别人的提交稍微一影响到你要使用的部分, 很有可能就会出问题.
+就在今天, 我发现了deno-drash最近的pr和commit的ci全炸了, test有很多失败掉, 其中我的pr也在其中(没错就是上一篇文章那个).
+原因是deno前几天的某一个commit, 更改了Headers的部分逻辑和实现, 会影响deno-drash的单元测试, 而deno的ci用的是deno的main分支&amp;hellip; 所以&amp;hellip; 全部炸了.
+那么好的操作应该是怎么样的, 我认为, 应该在本地测试成功之后, ci固定一个commit, 如果要更新, 就先本地测试通过了之后, 在更新ci的.
+(当然, 集成测试也炸了,不过那有可能是因为另外一个commit, 那边的另外一个开发者在排查和修复)</description></item><item><title>一个rust Cow的应用场景</title><link>/posts/a-rust-cow-small-usage/</link><pubDate>Sun, 25 Apr 2021 21:48:12 +0800</pubDate><guid>/posts/a-rust-cow-small-usage/</guid><description>Cow: Clone on Write(写时克隆)
+昨天我在给deno-drash提的pr提交代码, 发现ci跑unit test失败了, 于是在找错误.
+找到deno某个commit的时候, 看到别人的代码, 其中一段用了Cow. 我之前一直没明白Cow平时能在哪用上, 看到这段代码之后突然就懂了其中一个使用场景.
+在这样一个场景里:
+match有3个分支, 其中两个返回&amp;amp;str, 一个返回String
+let var: ? = match() { A =&amp;gt; str1, B =&amp;gt; str2, C =&amp;gt; string3, } 在以前,我会这么做:
+let var: String = .. ... A =&amp;gt; str1.to_string(), B =&amp;gt; str2.to_string(), C =&amp;gt; string3, 这么写的话, A和B的&amp;amp;str转为String的时候, 就必然要复制一次.
+但是如果用Cow的话:
+let var: Cow&amp;lt;str&amp;gt; = .. ... A =&amp;gt; Cow::Borrowed(str1), B =&amp;gt; Cow::Borrowed(str2), C =&amp;gt; Cow::Owned(string3), 这样子, 只要你后面不更改var的值, 就不会发生内存复制.</description></item><item><title>关于我</title><link>/about/</link><pubDate>Mon, 12 Apr 2021 19:21:36 +0800</pubDate><guid>/about/</guid><description>本人是广州本地人, 带专🐶.
 人生信条: 关你屁事, 关我屁事.
 学习: 现读机电一体化专业, 职中是城市轨道交通营运管理(学习地铁,城轨,公交系统等等营运内容), 都学的老菜, 上课混子考试渣渣.
 语言: 只会国话和粤语, 英语渣中之渣, 全靠谷歌翻译. 常用基础繁体字会看不会写.
@@ -8,4 +20,4 @@
 兴趣爱好:
 编程: 自学了一点点, 计算机基础/算法/网络等等基本不会. 只会php, java, rust, golang, python, js/ts/html等基础, c只能读懂不会写. dart/flutter, vue, nim等等稍微自学过. Github主页见首页.
 钢笔: 不懂高端笔, 不懂老笔. 由于买不起, 摸过的金笔也就3只, 价位都是入门3金 只低不高. 对便宜的笔鸡尾刚尖感兴趣, 便宜又好写才是真的好. 手上的钢笔就20来只, 价值估计不过3k.
-羽毛球: 极度菜鸡, 只比不会握拍不会规则的路人高一级的水平, 属于又菜又爱玩那种. 球不会打, 拍子, 线, 手胶和球倒是买了不少.</description></item><item><title>The First</title><link>/posts/the-first/</link><pubDate>Thu, 04 Mar 2021 09:26:26 +0800</pubDate><guid>/posts/the-first/</guid><description>The blog run on Cloudflare Pages whit Hugo. Theme yinyang</description></item></channel></rss>
+羽毛球: 极度菜鸡, 只比不会握拍不会规则的路人高一级的水平, 属于又菜又爱玩那种. 球不会打, 拍子, 线, 手胶和球倒是买了不少.</description></item><item><title>The First</title><link>/posts/the-first/</link><pubDate>Thu, 04 Mar 2021 09:26:26 +0800</pubDate><guid>/posts/the-first/</guid><description>This blog uses Hugo to run on Github Pages using Cloudflare cdn Theme yinyang</description></item></channel></rss>

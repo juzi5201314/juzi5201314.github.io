@@ -1,1 +1,13 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 橘子的日志本</title><link>/posts/</link><description>Recent content in Posts on 橘子的日志本</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 04 Mar 2021 09:26:26 +0800</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>The First</title><link>/posts/the-first/</link><pubDate>Thu, 04 Mar 2021 09:26:26 +0800</pubDate><guid>/posts/the-first/</guid><description>The blog run on Cloudflare Pages whit Hugo. Theme yinyang</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 橘子的日志本</title><link>/posts/</link><description>Recent content in Posts on 橘子的日志本</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 25 Apr 2021 22:10:37 +0800</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>最好不要在你的ci里使用其他软件的master分支</title><link>/posts/no-use-master-on-you-ci/</link><pubDate>Sun, 25 Apr 2021 22:10:37 +0800</pubDate><guid>/posts/no-use-master-on-you-ci/</guid><description>为什么怎么说呢, 因为我觉得, 在ci里使用到其他的仓库, 就不应该直接拉某个分支的最新commit, 否则别人的提交稍微一影响到你要使用的部分, 很有可能就会出问题.
+就在今天, 我发现了deno-drash最近的pr和commit的ci全炸了, test有很多失败掉, 其中我的pr也在其中(没错就是上一篇文章那个).
+原因是deno前几天的某一个commit, 更改了Headers的部分逻辑和实现, 会影响deno-drash的单元测试, 而deno的ci用的是deno的main分支&amp;hellip; 所以&amp;hellip; 全部炸了.
+那么好的操作应该是怎么样的, 我认为, 应该在本地测试成功之后, ci固定一个commit, 如果要更新, 就先本地测试通过了之后, 在更新ci的.
+(当然, 集成测试也炸了,不过那有可能是因为另外一个commit, 那边的另外一个开发者在排查和修复)</description></item><item><title>一个rust Cow的应用场景</title><link>/posts/a-rust-cow-small-usage/</link><pubDate>Sun, 25 Apr 2021 21:48:12 +0800</pubDate><guid>/posts/a-rust-cow-small-usage/</guid><description>Cow: Clone on Write(写时克隆)
+昨天我在给deno-drash提的pr提交代码, 发现ci跑unit test失败了, 于是在找错误.
+找到deno某个commit的时候, 看到别人的代码, 其中一段用了Cow. 我之前一直没明白Cow平时能在哪用上, 看到这段代码之后突然就懂了其中一个使用场景.
+在这样一个场景里:
+match有3个分支, 其中两个返回&amp;amp;str, 一个返回String
+let var: ? = match() { A =&amp;gt; str1, B =&amp;gt; str2, C =&amp;gt; string3, } 在以前,我会这么做:
+let var: String = .. ... A =&amp;gt; str1.to_string(), B =&amp;gt; str2.to_string(), C =&amp;gt; string3, 这么写的话, A和B的&amp;amp;str转为String的时候, 就必然要复制一次.
+但是如果用Cow的话:
+let var: Cow&amp;lt;str&amp;gt; = .. ... A =&amp;gt; Cow::Borrowed(str1), B =&amp;gt; Cow::Borrowed(str2), C =&amp;gt; Cow::Owned(string3), 这样子, 只要你后面不更改var的值, 就不会发生内存复制.</description></item><item><title>The First</title><link>/posts/the-first/</link><pubDate>Thu, 04 Mar 2021 09:26:26 +0800</pubDate><guid>/posts/the-first/</guid><description>This blog uses Hugo to run on Github Pages using Cloudflare cdn Theme yinyang</description></item></channel></rss>
