@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-cn" prefix="og: http://ogp.me/ns#">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="Hugo 0.82.0" />
@@ -7,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="Soeur" />
-  <meta property="og:url" content="/" />
-  <link rel="canonical" href="/" /><link rel="apple-touch-icon" href="/favicon.ico" />
+  <meta property="og:url" content="/posts/no-use-master-on-you-ci/" />
+  <link rel="canonical" href="/posts/no-use-master-on-you-ci/" /><link rel="apple-touch-icon" href="/favicon.ico" />
   <link rel="icon" href="/favicon.ico" />
   <link rel="shortcut" href="/favicon.ico" /><link rel="alternate" type="application/atom+xml" href="/index.xml" title="橘子的日志本">
 
@@ -20,10 +20,10 @@
            "@type": "WebPage",
            "@id": "\/"
       },
-      "articleSection" : "",
-      "name" : "橘子的日志本",
-      "headline" : "橘子的日志本",
-      "description" : "",
+      "articleSection" : "posts",
+      "name" : "最好不要在你的ci里使用其他软件的master分支",
+      "headline" : "最好不要在你的ci里使用其他软件的master分支",
+      "description" : "为什么怎么说呢, 因为我觉得, 在ci里使用到其他的仓库, 就不应该直接拉某个分支的最新commit, 否则别人的提交稍微一影响到你要使用的部分, 很有可能就会出问题.\n就在今天, 我发现了deno-drash最近的pr和commit的ci全炸了, test有很多失败掉, 其中我的pr也在其中(没错就是上一篇文章那个).\n原因是deno前几天的某一个commit, 更改了Headers的部分逻辑和实现, 会影响deno-drash的单元测试, 而deno的ci用的是deno的main分支\u0026hellip; 所以\u0026hellip; 全部炸了.\n那么好的操作应该是怎么样的, 我认为, 应该在本地测试成功之后, ci固定一个commit, 如果要更新, 就先本地测试通过了之后, 在更新ci的.\n(当然, 集成测试也炸了,不过那有可能是因为另外一个commit, 那边的另外一个开发者在排查和修复)",
       "inLanguage" : "en-US",
       "author" : "Soeur",
       "creator" : "Soeur",
@@ -33,15 +33,23 @@
       "copyrightYear" : "2021",
       "datePublished": "2021-04-25 22:10:37 \u002b0800 \u002b0800",
       "dateModified" : "2021-04-25 22:10:37 \u002b0800 \u002b0800",
-      "url" : "\/",
+      "url" : "\/posts\/no-use-master-on-you-ci\/",
       "keywords" : [  ]
   }
 </script>
-<title>橘子的日志本</title>
-  <meta property="og:title" content="橘子的日志本" />
-  <meta property="og:type" content="website" />
-  <meta property="og:description" content="" />
-  <meta name="description" content="" />
+<title>最好不要在你的ci里使用其他软件的master分支</title>
+  <meta property="og:title" content="最好不要在你的ci里使用其他软件的master分支" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="为什么怎么说呢, 因为我觉得, 在ci里使用到其他的仓库, 就不应该直接拉某个分支的最新commit, 否则别人的提交稍微一影响到你要使用的部分, 很有可能就会出问题.
+就在今天, 我发现了deno-drash最近的pr和commit的ci全炸了, test有很多失败掉, 其中我的pr也在其中(没错就是上一篇文章那个).
+原因是deno前几天的某一个commit, 更改了Headers的部分逻辑和实现, 会影响deno-drash的单元测试, 而deno的ci用的是deno的main分支&amp;hellip; 所以&amp;hellip; 全部炸了.
+那么好的操作应该是怎么样的, 我认为, 应该在本地测试成功之后, ci固定一个commit, 如果要更新, 就先本地测试通过了之后, 在更新ci的.
+(当然, 集成测试也炸了,不过那有可能是因为另外一个commit, 那边的另外一个开发者在排查和修复)" />
+  <meta name="description" content="为什么怎么说呢, 因为我觉得, 在ci里使用到其他的仓库, 就不应该直接拉某个分支的最新commit, 否则别人的提交稍微一影响到你要使用的部分, 很有可能就会出问题.
+就在今天, 我发现了deno-drash最近的pr和commit的ci全炸了, test有很多失败掉, 其中我的pr也在其中(没错就是上一篇文章那个).
+原因是deno前几天的某一个commit, 更改了Headers的部分逻辑和实现, 会影响deno-drash的单元测试, 而deno的ci用的是deno的main分支&amp;hellip; 所以&amp;hellip; 全部炸了.
+那么好的操作应该是怎么样的, 我认为, 应该在本地测试成功之后, ci固定一个commit, 如果要更新, 就先本地测试通过了之后, 在更新ci的.
+(当然, 集成测试也炸了,不过那有可能是因为另外一个commit, 那边的另外一个开发者在排查和修复)" />
   <meta property="og:locale" content="zh-cn" />
 
   
@@ -67,10 +75,11 @@
 
 
 <body>
-  <article class="posts">
+  <article class="post " id="article">
     <div class="row">
       <div class="col-xs-12">
-        
+        <div class="site-header">
+          
 <header>
   <div class="header-title">
     <a href="/"
@@ -99,62 +108,69 @@
 </div>
 <div class="header-line"></div>
 
-        <div id="posts-list">
-          <section>
-            <h1 class="site-date-catalog">2021</h1>
-
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-3 col-sm-2">
-                <time datetime="2021-04-25 22:10:37 &#43;0800">Apr 25</time>
-              </div>
-              <div class="posts-title col-xs-9 col-sm-10">
-                <div class="row">
-                  <div class="col-xs-11 col-sm-10">
-                    <a href="/posts/no-use-master-on-you-ci/">最好不要在你的ci里使用其他软件的master分支</a>
-                  </div>
-                  <div class="col-xs-1 col-sm-2 posts-categories">
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-3 col-sm-2">
-                <time datetime="2021-04-25 21:48:12 &#43;0800">Apr 25</time>
-              </div>
-              <div class="posts-title col-xs-9 col-sm-10">
-                <div class="row">
-                  <div class="col-xs-11 col-sm-10">
-                    <a href="/posts/a-rust-cow-small-usage/">一个rust Cow的应用场景</a>
-                  </div>
-                  <div class="col-xs-1 col-sm-2 posts-categories">
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-3 col-sm-2">
-                <time datetime="2021-03-04 09:26:26 &#43;0800">Mar 04</time>
-              </div>
-              <div class="posts-title col-xs-9 col-sm-10">
-                <div class="row">
-                  <div class="col-xs-11 col-sm-10">
-                    <a href="/posts/the-first/">The First</a>
-                  </div>
-                  <div class="col-xs-1 col-sm-2 posts-categories">
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-          </section>
-          
         </div>
+        <header class="post-header">
+          <h1 class="post-title">最好不要在你的ci里使用其他软件的master分支</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2021-04-25 22:10:37 &#43;0800">
+                25 Apr 2021
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://gugugu.dev/">@Soeur</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          
+          <p>为什么怎么说呢, 因为我觉得, 在ci里使用到其他的仓库,
+就不应该直接拉某个分支的最新commit,
+否则别人的提交稍微一影响到你要使用的部分,
+很有可能就会出问题.</p>
+<p>就在今天, 我发现了<a href="(https://github.com/drashland/deno-drash)">deno-drash</a>最近的pr和commit的ci全炸了,
+test有很多失败掉, 其中我的pr也在其中(没错就是上一篇文章那个).</p>
+<p>原因是deno前几天的某一个commit, 更改了Headers的部分逻辑和实现,
+会影响<a href="(https://github.com/drashland/deno-drash)">deno-drash</a>的单元测试, 而deno的ci用的是deno的main分支&hellip;
+所以&hellip; 全部炸了.</p>
+<p>那么好的操作应该是怎么样的, 我认为, 应该在本地测试成功之后,
+ci固定一个commit, 如果要更新, 就先本地测试通过了之后,
+在更新ci的.</p>
+<p>(当然, 集成测试也炸了,不过那有可能是因为另外一个commit,
+那边的另外一个开发者在排查和修复)</p>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+        
+          <div class="row">
+            <div class="col-xs-12">
+              
+            </div>
+          </div>
+
+          
+
+
+
+          
+          
+          <div style="height: 50px;"></div>
+          
+        
 
         <div class="site-footer">
   
@@ -174,6 +190,8 @@
     
   
 </script>
+
+  
 
 </body>
 

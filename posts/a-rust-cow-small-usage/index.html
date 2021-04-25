@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-cn" prefix="og: http://ogp.me/ns#">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="Hugo 0.82.0" />
@@ -7,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="Soeur" />
-  <meta property="og:url" content="/" />
-  <link rel="canonical" href="/" /><link rel="apple-touch-icon" href="/favicon.ico" />
+  <meta property="og:url" content="/posts/a-rust-cow-small-usage/" />
+  <link rel="canonical" href="/posts/a-rust-cow-small-usage/" /><link rel="apple-touch-icon" href="/favicon.ico" />
   <link rel="icon" href="/favicon.ico" />
   <link rel="shortcut" href="/favicon.ico" /><link rel="alternate" type="application/atom+xml" href="/index.xml" title="橘子的日志本">
 
@@ -20,10 +20,10 @@
            "@type": "WebPage",
            "@id": "\/"
       },
-      "articleSection" : "",
-      "name" : "橘子的日志本",
-      "headline" : "橘子的日志本",
-      "description" : "",
+      "articleSection" : "posts",
+      "name" : "一个rust Cow的应用场景",
+      "headline" : "一个rust Cow的应用场景",
+      "description" : "Cow: Clone on Write(写时克隆)\n 昨天我在给deno-drash提的pr提交代码, 发现ci跑unit test失败了, 于是在找错误.\n找到deno某个commit的时候, 看到别人的代码, 其中一段用了Cow. 我之前一直没明白Cow平时能在哪用上, 看到这段代码之后突然就懂了其中一个使用场景.\n在这样一个场景里:\n match有3个分支, 其中两个返回\u0026amp;str, 一个返回String\n let var: ? = match() { A =\u0026gt; str1, B =\u0026gt; str2, C =\u0026gt; string3, } 在以前,我会这么做:\nlet var: String = .. ... A =\u0026gt; str1.to_string(), B =\u0026gt; str2.to_string(), C =\u0026gt; string3, 这么写的话, A和B的\u0026amp;str转为String的时候, 就必然要复制一次.\n但是如果用Cow的话:\nlet var: Cow\u0026lt;str\u0026gt; = .. ... A =\u0026gt; Cow::Borrowed(str1), B =\u0026gt; Cow::Borrowed(str2), C =\u0026gt; Cow::Owned(string3), 这样子, 只要你后面不更改var的值, 就不会发生内存复制.",
       "inLanguage" : "en-US",
       "author" : "Soeur",
       "creator" : "Soeur",
@@ -31,17 +31,33 @@
       "accountablePerson" : "Soeur",
       "copyrightHolder" : "Soeur",
       "copyrightYear" : "2021",
-      "datePublished": "2021-04-25 22:10:37 \u002b0800 \u002b0800",
-      "dateModified" : "2021-04-25 22:10:37 \u002b0800 \u002b0800",
-      "url" : "\/",
+      "datePublished": "2021-04-25 21:48:12 \u002b0800 \u002b0800",
+      "dateModified" : "2021-04-25 21:48:12 \u002b0800 \u002b0800",
+      "url" : "\/posts\/a-rust-cow-small-usage\/",
       "keywords" : [  ]
   }
 </script>
-<title>橘子的日志本</title>
-  <meta property="og:title" content="橘子的日志本" />
-  <meta property="og:type" content="website" />
-  <meta property="og:description" content="" />
-  <meta name="description" content="" />
+<title>一个rust Cow的应用场景</title>
+  <meta property="og:title" content="一个rust Cow的应用场景" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="Cow: Clone on Write(写时克隆)
+ 昨天我在给deno-drash提的pr提交代码, 发现ci跑unit test失败了, 于是在找错误.
+找到deno某个commit的时候, 看到别人的代码, 其中一段用了Cow. 我之前一直没明白Cow平时能在哪用上, 看到这段代码之后突然就懂了其中一个使用场景.
+在这样一个场景里:
+ match有3个分支, 其中两个返回&amp;amp;str, 一个返回String
+ let var: ? = match() { A =&amp;gt; str1, B =&amp;gt; str2, C =&amp;gt; string3, } 在以前,我会这么做:
+let var: String = .. ... A =&amp;gt; str1.to_string(), B =&amp;gt; str2.to_string(), C =&amp;gt; string3, 这么写的话, A和B的&amp;amp;str转为String的时候, 就必然要复制一次.
+但是如果用Cow的话:
+let var: Cow&amp;lt;str&amp;gt; = .. ... A =&amp;gt; Cow::Borrowed(str1), B =&amp;gt; Cow::Borrowed(str2), C =&amp;gt; Cow::Owned(string3), 这样子, 只要你后面不更改var的值, 就不会发生内存复制." />
+  <meta name="description" content="Cow: Clone on Write(写时克隆)
+ 昨天我在给deno-drash提的pr提交代码, 发现ci跑unit test失败了, 于是在找错误.
+找到deno某个commit的时候, 看到别人的代码, 其中一段用了Cow. 我之前一直没明白Cow平时能在哪用上, 看到这段代码之后突然就懂了其中一个使用场景.
+在这样一个场景里:
+ match有3个分支, 其中两个返回&amp;amp;str, 一个返回String
+ let var: ? = match() { A =&amp;gt; str1, B =&amp;gt; str2, C =&amp;gt; string3, } 在以前,我会这么做:
+let var: String = .. ... A =&amp;gt; str1.to_string(), B =&amp;gt; str2.to_string(), C =&amp;gt; string3, 这么写的话, A和B的&amp;amp;str转为String的时候, 就必然要复制一次.
+但是如果用Cow的话:
+let var: Cow&amp;lt;str&amp;gt; = .. ... A =&amp;gt; Cow::Borrowed(str1), B =&amp;gt; Cow::Borrowed(str2), C =&amp;gt; Cow::Owned(string3), 这样子, 只要你后面不更改var的值, 就不会发生内存复制." />
   <meta property="og:locale" content="zh-cn" />
 
   
@@ -67,10 +83,11 @@
 
 
 <body>
-  <article class="posts">
+  <article class="post " id="article">
     <div class="row">
       <div class="col-xs-12">
-        
+        <div class="site-header">
+          
 <header>
   <div class="header-title">
     <a href="/"
@@ -99,62 +116,84 @@
 </div>
 <div class="header-line"></div>
 
-        <div id="posts-list">
-          <section>
-            <h1 class="site-date-catalog">2021</h1>
-
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-3 col-sm-2">
-                <time datetime="2021-04-25 22:10:37 &#43;0800">Apr 25</time>
-              </div>
-              <div class="posts-title col-xs-9 col-sm-10">
-                <div class="row">
-                  <div class="col-xs-11 col-sm-10">
-                    <a href="/posts/no-use-master-on-you-ci/">最好不要在你的ci里使用其他软件的master分支</a>
-                  </div>
-                  <div class="col-xs-1 col-sm-2 posts-categories">
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-3 col-sm-2">
-                <time datetime="2021-04-25 21:48:12 &#43;0800">Apr 25</time>
-              </div>
-              <div class="posts-title col-xs-9 col-sm-10">
-                <div class="row">
-                  <div class="col-xs-11 col-sm-10">
-                    <a href="/posts/a-rust-cow-small-usage/">一个rust Cow的应用场景</a>
-                  </div>
-                  <div class="col-xs-1 col-sm-2 posts-categories">
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="row posts-line">
-              <div class="posts-date col-xs-3 col-sm-2">
-                <time datetime="2021-03-04 09:26:26 &#43;0800">Mar 04</time>
-              </div>
-              <div class="posts-title col-xs-9 col-sm-10">
-                <div class="row">
-                  <div class="col-xs-11 col-sm-10">
-                    <a href="/posts/the-first/">The First</a>
-                  </div>
-                  <div class="col-xs-1 col-sm-2 posts-categories">
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-          </section>
-          
         </div>
+        <header class="post-header">
+          <h1 class="post-title">一个rust Cow的应用场景</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2021-04-25 21:48:12 &#43;0800">
+                25 Apr 2021
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="https://gugugu.dev/">@Soeur</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          
+          <blockquote>
+<p><a href="(https://doc.rust-lang.org/std/borrow/enum.Cow.html)">Cow</a>: Clone on Write(写时克隆)</p>
+</blockquote>
+<p>昨天我在给<a href="(https://github.com/drashland/deno-drash)">deno-drash</a>提的pr提交代码, 发现ci跑unit test失败了, 于是在找错误.</p>
+<p>找到deno某个commit的时候, 看到别人的代码, 其中一段用了Cow. 我之前一直没明白Cow平时能在哪用上, 看到这段代码之后突然就懂了其中一个使用场景.</p>
+<p>在这样一个场景里:</p>
+<blockquote>
+<p>match有3个分支, 其中两个返回&amp;str, 一个返回String</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> var: <span style="color:#f92672">?</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">match</span>() {
+A <span style="color:#f92672">=&gt;</span> str1,
+B <span style="color:#f92672">=&gt;</span> str2,
+C <span style="color:#f92672">=&gt;</span> string3,
+}
+</code></pre></div><p>在以前,我会这么做:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> var: String <span style="color:#f92672">=</span> ..
+...
+A <span style="color:#f92672">=&gt;</span> str1.to_string(),
+B <span style="color:#f92672">=&gt;</span> str2.to_string(),
+C <span style="color:#f92672">=&gt;</span> string3,
+</code></pre></div><p>这么写的话, A和B的&amp;str转为String的时候, 就必然要复制一次.</p>
+<p>但是如果用Cow的话:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">let</span> var: <span style="color:#a6e22e">Cow</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">str</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> ..
+...
+A <span style="color:#f92672">=&gt;</span> Cow::Borrowed(str1),
+B <span style="color:#f92672">=&gt;</span> Cow::Borrowed(str2),
+C <span style="color:#f92672">=&gt;</span> Cow::Owned(string3),
+</code></pre></div><p>这样子, 只要你后面不更改var的值, 就不会发生内存复制.</p>
+<p>技巧+1🤪</p>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+        
+          <div class="row">
+            <div class="col-xs-12">
+              
+            </div>
+          </div>
+
+          
+
+
+
+          
+          
+          <div style="height: 50px;"></div>
+          
+        
 
         <div class="site-footer">
   
@@ -174,6 +213,8 @@
     
   
 </script>
+
+  
 
 </body>
 
